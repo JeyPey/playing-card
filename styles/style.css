@@ -1,0 +1,56 @@
+@import url("./fonts.css");
+
+*{
+  font-family: 'PublicSans';
+  font-size: 24px;
+}
+
+
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: #1f581f;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .logo img {
+  color: ;
+} */
+
+.logo-text {
+  font-family: "MySoul";
+  font-size: 64px;
+}
+
+.header-list {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.card-fan {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 420px;
+  margin-top: 100px;
+  background-color: #d8d7d7;
+  border-radius: 10px;
+}
+
+.card svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
