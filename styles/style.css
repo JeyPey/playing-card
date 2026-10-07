@@ -22,6 +22,11 @@ header {
   color: ;
 } */
 
+.logo-icon {
+    width: 80px;
+    height: 80px;
+}
+
 .logo-text {
   font-family: "MySoul";
   font-size: 64px;
@@ -53,4 +58,14 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  color: #222;
+}
+
+.diamond {
+  color: red;
 }
