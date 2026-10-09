@@ -1,13 +1,17 @@
 @import url("./fonts.css");
 
+$pattern: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PHBhdGggZD0iTTEwIDAgTDIwIDEwIEwxMCAyMCBMMCAxMCBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1vcGFjaXR5PSIwLjI1Ii8+PC9zdmc+");
+
 $red: crimson;
 $black: #222;
 $card-bg: #d8d7d7;
 $body-bg: #1f581f;
+$speed: 0.3s;
+$spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+$shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 
 * {
   font-family: "PublicSans";
-
 }
 
 body {
@@ -42,16 +46,76 @@ header {
 .card-fan {
   display: flex;
   justify-content: center;
-  gap: 20px;
+}
+
+.card-fan:hover .card {
+  margin-left: 20px;
+
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
 .card {
+  transform-origin: bottom center;
+  transition:
+    transform $speed $spring,
+    margin $speed ease,
+    rotate $speed $spring;
+
   position: relative;
   width: 300px;
   height: 420px;
   margin-top: 100px;
-  background-color: $card-bg;
+  margin-left: -240px;
+  perspective: 1000px;
+  transition:
+    transform $speed $spring,
+    margin $speed ease;
+
+  &:hover {
+    transform: translateY(-20px);
+  }
+
+  &.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+$cards: 4;
+
+@for $i from 1 through $cards {
+  .card:nth-child(#{$i}) {
+    rotate: ($i - 2.5) * 4deg;
+  }
+
+  .card-fan:hover .card:nth-child(#{$i}) {
+    rotate: ($i - 2.5) * 8deg;
+  }
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
   border-radius: 10px;
+  backface-visibility: hidden;
+  box-shadow: $shadow;
+}
+
+.card-front {
+  background-color: $card-bg;
 
   svg {
     position: absolute;
@@ -59,6 +123,13 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+
+.card-back {
+  background-color: #7a1f2b;
+  background-image: $pattern;
+  background-size: 20px 20px;
+  transform: rotateY(180deg);
 }
 
 .icon {

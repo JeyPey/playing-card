@@ -30,37 +30,71 @@
 
     <div class="card-fan">
         <div class="card">
-            <span>A</span>
-            <svg width="100" height="100" viewBox="0 0 100 100">
-                <path fill="crimson" d="M 50 90
+            <div class="card-inner">
+                <div class="card-front">
+                    <span>A</span>
+                    <svg width="100" height="100" viewBox="0 0 100 100">
+                        <path fill="crimson" d="M 50 90
        C 10 60, 0 35, 20 15
        C 35 2, 50 15, 50 28
        C 50 15, 65 2, 80 15
        C 100 35, 90 60, 50 90
        Z" />
-            </svg>
+                    </svg>
+                </div>
+                <div class="card-back"></div>
+            </div>
         </div>
 
         <div class="card">
-            <span>K</span>
-            <svg class="icon">
-                <use href="./icon/sprite.svg#club"></use>
-            </svg>
+            <div class="card-inner">
+                <div class="card-front">
+                    <span>K</span>
+                    <svg class="icon">
+                        <use href="./icon/sprite.svg#club"></use>
+                    </svg>
+                </div>
+                <div class="card-back"></div>
+            </div>
         </div>
 
         <div class="card">
-            <span>Q</span>
-            <svg class="icon red">
-                <use href="./icon/sprite.svg#diamond"></use>
-            </svg>
+            <div class="card-inner">
+                <div class="card-front">
+                    <span>Q</span>
+                    <svg class="icon red">
+                        <use href="./icon/sprite.svg#diamond"></use>
+                    </svg>
+                </div>
+                <div class="card-back"></div>
+            </div>
         </div>
 
         <div class="card">
-             <svg class="icon">
-                <use href="./icon/sprite.svg#spade"></use>
-            </svg>
+            <div class="card-inner">
+                <div class="card-front">
+                    <span>J</span>
+                    <svg class="icon">
+                        <use href="./icon/sprite.svg#spade"></use>
+                    </svg>
+                </div>
+                <div class="card-back"></div>
+            </div>
         </div>
     </div>
+
+    <section id="video">
+    <h2>Video</h2>
+    <video controls preload="metadata" poster="./icon/poster.jpg" width="600" height="337">
+        <source src="./media/fan-of-cards.mp4" type="video/mp4">
+    </video>
+</section>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => card.classList.toggle('flipped'));
+        });
+    </script>
 </body>
 
 </html>
